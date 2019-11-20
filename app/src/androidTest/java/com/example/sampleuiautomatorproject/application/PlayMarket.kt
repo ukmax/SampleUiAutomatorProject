@@ -4,6 +4,7 @@ import com.example.sampleuiautomatorproject.util.byStringRes
 import com.example.sampleuiautomatorproject.util.byText
 import com.example.sampleuiautomatorproject.util.ext.*
 import org.junit.Assert.assertTrue
+import java.util.concurrent.TimeUnit
 
 class PlayMarket : AbstractApplication("com.android.vending") {
 
@@ -29,11 +30,12 @@ class PlayMarket : AbstractApplication("com.android.vending") {
     }
 
     fun waitForInstalled() {
+        TimeUnit.SECONDS.sleep(5L)
         assertTrue(
             "Приложение не было установлено",
             openInstalledAppButton
-                .waitFindObject(20)
-                .waitIsClickable(true, 20.secondsToMillis())
+                .waitFindObject(10)
+                .waitIsClickable(true, 60.secondsToMillis())
         )
     }
 
